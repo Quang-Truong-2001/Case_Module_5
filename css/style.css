@@ -878,6 +878,7 @@ textarea.form-control {
   transition: .3s all ease;
 }
 
+
 .box.hover:hover img, .box.hover:focus img {
   margin-top: -20px;
 }
@@ -1615,4 +1616,14 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+label{
+  font-family: "Times New Roman";
+}
+input{
+  font-family: "Times New Roman";
+}
+.form-language{
+  font-family: "Times New Roman"!important;
 }
