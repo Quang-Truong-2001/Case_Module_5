@@ -68,77 +68,51 @@
 
     <section class="site-section bg-light">
       <div class="container">
-
-        <div class="d-flex justify-content-center">
-          <div class="bg-white object-fit-contain px-5 py-5 rounded">
-              <div>
-                <div class="d-flex justify-content-center">
-                  <h3 class="text-dark">Mời bạn nhập thông tin</h3>
-                </div>
-                <div class="form-language">
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="px-2 py-2">
-                          <div >
-                            <div class="form-group">
-                              <label for="area" class="form-label"><span>Họ tên</span><span class="text-danger"> (*)</span></label>
-                              <input type="text" class="form-control" id="area">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="money" class="form-label"><span>Ngày sinh</span><span class="text-danger"> (*)</span></label>
-                            <input type="text" class="form-control" id="money">
-                          </div>
-                          <div class="form-group">
-                            <label for="stardard" class="form-label"><span>Số CCCD</span><span class="text-danger"> (*)</span></label>
-                            <input type="text" class="form-control" id="stardard">
-                          </div>
-                          <div class="form-group">
-                            <label class="form-label"><span>Giới tính</span><span class="text-danger"> (*)</span></label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="Male">
-                              <label class="form-check-label" for="Male">
-                                Nam
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="Female">
-                              <label class="form-check-label" for="Female">
-                                Nữ
-                              </label>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="px-2 py-2">
-                          <div class="form-group">
-                            <label for="abc" class="form-label"><span>Số điện thoại</span><span class="text-danger"> (*)</span></label>
-                            <input type="text" class="form-control" id="abc">
-                          </div>
-                          <div class="form-group">
-                            <label for="free" class="form-label"><span>Email</span><span class="text-danger"> (*)</span></label>
-                            <input type="text" class="form-control" id="free">
-                          </div>
-                          <div class="form-group">
-                            <label for="address" class="form-label"><span>Địa chỉ</span><span class="text-danger"> (*)</span></label>
-                            <input type="text" class="form-control" id="address">
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-center pt-5">
-                          <button type="submit" class="btn btn-primary">Cập nhật</button>
-                        </div>
-                      </div>
-
-                    </div>
-
-
-                  </form>
+          <div>
+            <h3>Thêm mới hợp đồng</h3>
+          </div>
+          <div class="form-language">
+            <form>
+              <div >
+                <div class="form-group">
+                  <label for="area" class="form-label"><span>Mã hợp đồng</span><span class="text-danger"> (*)</span></label>
+                  <input type="text" class="form-control" id="area">
                 </div>
               </div>
+              <div class="mb-3">
+                <label for="style" class="form-label"><span>Khách hàng làm hợp đồng</span><span class="text-danger"> (*)</span></label>
+                <select id="style" class="custom-select" aria-label="Default select example">
+                  <option value="0">Nguyễn Văn A</option>
+                  <option value="1">Nguyễn Văn B</option>
+                  <option value="2">Nguyễn Văn C</option>
+                  <option value="3">Nguyễn Văn D</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="styl" class="form-label"><span>Thông tin dịch vụ</span><span class="text-danger"> (*)</span></label>
+                <select id="styl" class="custom-select" aria-label="Default select example">
+                  <option value="0">Dịch vụ A</option>
+                  <option value="0">Dịch vụ B</option>
+                  <option value="0">Dịch vụ C</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="stanrdard" class="form-label"><span>Ngày làm hợp đồng</span><span class="text-danger"> (*)</span></label>
+                <input type="date" class="form-control" id="stanrdard">
+              </div>
+              <div class="form-group">
+                <label for="abc" class="form-label"><span>Ngày kết thúc hợp đồng</span><span class="text-danger"> (*)</span></label>
+                <input type="date" class="form-control" id="abc">
+              </div>
+              <div class="form-group">
+                <label for="free" class="form-label"><span>Tiền đặt cọc</span><span class="text-danger"> (*)</span></label>
+                <input type="text" class="form-control" id="free">
+              </div>
+              <button type="submit" class="btn btn-primary">Thêm mới</button>
+            </form>
           </div>
+        <div>
+
         </div>
       </div>
     </section>
