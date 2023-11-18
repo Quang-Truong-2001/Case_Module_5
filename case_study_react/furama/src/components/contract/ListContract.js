@@ -6,7 +6,7 @@ function ListContract(){
                     <div>
                         <h3>Danh sách hợp đồng</h3>
                     </div>
-                    <div className="card" style="font-family: 'Times New Roman'">
+                    <div className="card" style={{ fontFamily: '"Times New Roman"' }}>
                         <table className="table">
                             <thead>
                             <tr>
