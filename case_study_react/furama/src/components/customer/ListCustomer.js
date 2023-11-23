@@ -1,4 +1,19 @@
+import {useEffect, useState} from "react";
+import * as customerService from "../../services/CustomerService"
+import {getAllCustomer} from "../../services/CustomerService";
 function ListCustomer(){
+    const [listCustomer, setListCustomer]=useState([]);
+
+    const getListCustomer=async ()=>{
+        if (listCustomer){
+            let data=await customerService.getAllCustomer();
+            setListCustomer(data);
+        }
+    }
+
+    useEffect(()=>{
+        getListCustomer();
+    },[])
     return(
         <>
             <section className="site-section bg-light">
@@ -13,28 +28,18 @@ function ListCustomer(){
                                 <th scope="col">#</th>
                                 <th scope="col">Tên khách hàng</th>
                                 <th scope="col">Số điện thoại</th>
-                                <th scope="col">Loại khách hàng</th>
+                                <th scope="col">Email</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {listCustomer.map((item, index)=>(
+                                <tr key={item.id}>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{item.name}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.email}</td>
+                                </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>

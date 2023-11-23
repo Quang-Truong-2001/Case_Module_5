@@ -1,3 +1,4 @@
+import {Link, NavLink} from "react-router-dom";
 
 function Header(){
     return(
@@ -11,38 +12,42 @@ function Header(){
                                 aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-
                         <div className="collapse navbar-collapse navbar-light" id="navbarsExample05">
                             <ul className="navbar-nav ml-auto pl-lg-5 pl-0">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="">Home</a>
+                                    <NavLink to="/service" className="nav-link active">Trang chủ</NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="" id="dropdown04"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rooms</a>
-                                    <div className="dropdown-menu" aria-labelledby="dropdown04">
-                                        <a className="dropdown-item" href="">Room Videos</a>
-                                        <a className="dropdown-item" href="">Presidential Room</a>
-                                        <a className="dropdown-item" href="">Luxury Room</a>
-                                        <a className="dropdown-item" href="">Deluxe Room</a>
-                                    </div>
-
+                                    <a className="nav-link dropdown-toggle active" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Khách hàng
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li><Link to="/customer/new" className="dropdown-item">Thêm khách hàng</Link></li>
+                                        <li><Link to="/customer" className="dropdown-item">Danh sách khách hàng</Link></li>
+                                    </ul>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="nav-link active" href="">Blog</a>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle active"  role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dịch vụ
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li><Link to="/service/new" className="dropdown-item">Thêm dịch vụ</Link></li>
+                                        <li><Link to="/service" className="dropdown-item">Danh sách dịch vụ</Link></li>
+                                    </ul>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="nav-link " href="">About</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="">Contact</a>
-                                </li>
-
-                                <li className="nav-item cta">
-                                    <a className="nav-link" href=""><span>Book Now</span></a>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle active"  role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Hợp đồng
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li><Link to="/contract/new" className="dropdown-item">Thêm hợp đồng</Link></li>
+                                        <li><Link to="/contract" className="dropdown-item">Danh sách hợp đồng</Link></li>
+                                    </ul>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </nav>

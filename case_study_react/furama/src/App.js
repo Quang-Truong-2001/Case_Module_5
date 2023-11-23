@@ -8,19 +8,23 @@ import ListCustomer from "./components/customer/ListCustomer";
 import NewCustomer from "./components/customer/NewCustomer";
 import NewService from "./components/service/NewService";
 import ListService from "./components/service/ListService";
+import {Route, Routes} from "react-router-dom";
+import UpdateCustomer from "./components/customer/UpdateCustomer";
 
 function App() {
   return (
     <>
       <Header/>
-        {/*<ListContract/>*/}
-      {/*<NewContract/>*/}
-      {/*<ListCustomer/>*/}
-      {/*<NewCustomer/>*/}
-      {/*<NewService/>*/}
-        <ListService/>
-        <Footer/>
-
+          <Routes>
+            <Route path="/service" element={<ListService />} />
+            <Route path="/customer" element={<ListCustomer />} />
+            <Route path="/contract" element={<ListContract />} />
+            <Route path="/service/new" element={<NewService />} />
+            <Route path="/customer/new" element={<NewCustomer />} />
+            <Route path="/contract/new" element={<NewContract />} />
+            <Route path="/customer/update" element={<UpdateCustomer />} />
+          </Routes>
+      <Footer/>
     </>
   );
 }

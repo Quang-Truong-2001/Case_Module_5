@@ -1,0 +1,40 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "birthDay": "20-10-2023",
+      "gender": 0,
+      "phone": "0847211345",
+      "email": "a@gamil.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "name": "Nguyễn Văn A",
+      "birthDay": "20-10-2023",
+      "gender": 0,
+      "phone": "0847211345",
+      "email": "a@gamil.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn A",
+      "birthDay": "20-10-2023",
+      "gender": 0,
+      "phone": "0847211345",
+      "email": "a@gamil.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "name": "ngô quang trường",
+      "birthDay": "2023-11-28",
+      "gender": "1",
+      "phone": "0945206458",
+      "email": "quangtruong2112001@gmail.com",
+      "address": "Gio Linh",
+      "id": 4
+    }
+  ]
+}

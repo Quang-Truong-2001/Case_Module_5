@@ -12,7 +12,6 @@ function ListService(){
                                 <h1>News &amp; Events</h1>
                                 <p>Read our daily news and events of our luxury resort.</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -20,11 +19,10 @@ function ListService(){
 
             <section className="site-section bg-light">
                 <div className="container">
-
                     <div className="row mb-5">
                         <div className="col-md-4">
                             <div className="post-entry">
-                                <a href="blog-single.html"><img src="images/img_1.jpg" alt="Image placeholder"
+                                <a href="blog-single.html"><img src="https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
                                     <div className="category">Rooms</div>
@@ -37,7 +35,7 @@ function ListService(){
                         </div>
                         <div className="col-md-4">
                             <div className="post-entry">
-                                <a href="blog-single.html"><img src="images/img_2.jpg" alt="Image placeholder"
+                                <a href="blog-single.html"><img src="https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-370x239.jpg" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
                                     <div className="category">News</div>
@@ -50,7 +48,7 @@ function ListService(){
                         </div>
                         <div className="col-md-4">
                             <div className="post-entry">
-                                <a href="blog-single.html"><img src="images/img_3.jpg" alt="Image placeholder"
+                                <a href="blog-single.html"><img src="https://furama-resort-da-nang.hotelmix.vn/data/Photos/OriginalPhoto/12779/1277944/1277944198/Furama-Resort-Danang-Exterior.JPEG" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
                                     <div className="category">New Rooms</div>
