@@ -1,20 +1,54 @@
-import {Field, Form, Formik} from "formik";
-import * as customerService from "../../services/CustomerService"
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
+import * as Yup from "yup"
+import {useEffect, useState} from "react";
+import * as customerService from "../../services/CustomerService"
+import {toast} from "react-toastify";
 
 function NewCustomer(){
     const navigate=useNavigate();
+    const [listCustomerType, setListCustomerType]=useState([]);
+    const [customerType,setCustomerType]=useState({});
     const initValue={
         name: "",
         birthDay: "",
+        idCard: "",
         gender: "",
         phone: "",
         email: "",
-        address: ""
+        address: "",
+        typeCustomer: `${JSON.stringify({
+            idTypeCustomer: "", 
+            nameTypeCustomer: ""
+        })}`
     }
+    const validateObject={
+        // name: Yup.string().required("Không được để trống"),
+        // birthDay: Yup.string().required("Không được để trống"),
+        // idCard: Yup.string().required("Không được để trống")
+        //     .matches(/^[0-9]{11}$/,"Số CCCD không hợp lệ"),
+        // gender: Yup.string().required("Không được để trống"),
+        // phone: Yup.string().required("Không được để trống")
+        //     .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/,"Số điện thoại không hợp lệ"),
+        // email: Yup.string().required("Không được để trống")
+        //     .matches(/^\S+@\S+\.\S+$/, "Email không hợp lệ"),
+        // address: Yup.string().required("Không được để trống")
+    }
+    const getAllCustomerType=async ()=>{
+        let data=await customerService.getAllTypeCustomer();
+        console.log(data)
+        setListCustomerType(data);
+    }
+
+    useEffect(()=>{
+        getAllCustomerType();
+    },[])
     const createCustomer=async (values)=>{
-        let isSuccess=await customerService.addCustomer(values);
+        let res={...values,typeCustomer: JSON.parse(values.typeCustomer)}
+        let isSuccess=await customerService.addCustomer(res);
+
         if(isSuccess){
+            toast.success("Thêm khách hàng thành công")
             navigate("/customer")
         }
     }
@@ -32,9 +66,10 @@ function NewCustomer(){
                                 <div className="form-language">
                                     <Formik initialValues={initValue}
                                             onSubmit={(values)=>{
-                                                console.log(values)
                                                 createCustomer(values);
-                                            }}>
+                                            }}
+                                            validationSchema={Yup.object(validateObject)}
+                                    >
 
                                         <Form>
                                             <div className="row">
@@ -46,6 +81,7 @@ function NewCustomer(){
                                                                        className="form-label"><span>Họ tên</span><span
                                                                     className="text-danger"> (*)</span></label>
                                                                 <Field type="text" className="form-control" id="area" name="name"/>
+                                                                <ErrorMessage name="name" className="text-danger" component="span"/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -53,12 +89,14 @@ function NewCustomer(){
                                                                    className="form-label"><span>Ngày sinh</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field type="date" className="form-control" id="money" name="birthDay"/>
+                                                            <ErrorMessage name="birthDay" className="text-danger" component="span"/>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label htmlFor="stardard"
+                                                            <label htmlFor="idCard"
                                                                    className="form-label"><span>Số CCCD</span><span
                                                                 className="text-danger"> (*)</span></label>
-                                                            <Field type="text" className="form-control" id="stardard" name="gender"/>
+                                                            <Field type="text" className="form-control" id="idCard" name="idCard"/>
+                                                            <ErrorMessage name="idCard" className="text-danger" component="span"/>
                                                         </div>
                                                         <div className="form-group">
                                                             <label className="form-label"><span>Giới tính</span><span
@@ -88,6 +126,7 @@ function NewCustomer(){
                                                                    className="form-label"><span>Số điện thoại</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field type="text" className="form-control" id="abc" name="phone"/>
+                                                            <ErrorMessage name="phone" className="text-danger" component="span"/>
                                                         </div>
                                                         <div className="form-group">
                                                             <label htmlFor="free"
@@ -100,6 +139,16 @@ function NewCustomer(){
                                                                    className="form-label"><span>Địa chỉ</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field type="text" className="form-control" id="address" name="address"/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="idTypeCustomer"
+                                                                   className="form-label"><span>Loại khách hàng</span><span
+                                                                className="text-danger"> (*)</span></label>
+                                                            <Field className="form-select"  name="idTypeCustomer" id="idTypeCustomer" as="select">
+                                                                {listCustomerType.map((item)=>(
+                                                                    <option key={item.idTypeCustomer} value={JSON.stringify(item)}>{item.nameTypeCustomer}</option>
+                                                                ))}
+                                                            </Field>
                                                         </div>
                                                     </div>
                                                     <div className="d-flex justify-content-center pt-5">

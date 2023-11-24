@@ -6,25 +6,33 @@ import ListContract from "./components/contract/ListContract";
 import NewContract from "./components/contract/NewContract";
 import ListCustomer from "./components/customer/ListCustomer";
 import NewCustomer from "./components/customer/NewCustomer";
-import NewService from "./components/service/NewService";
+import NewServiceVilla from "./components/service/NewServiceVilla";
 import ListService from "./components/service/ListService";
 import {Route, Routes} from "react-router-dom";
 import UpdateCustomer from "./components/customer/UpdateCustomer";
+import NewServiceRoom from "./components/service/NewServiceRoom";
+import NewServiceHouse from "./components/service/NewServiceHouse";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify";
+
 
 function App() {
   return (
     <>
       <Header/>
           <Routes>
-            <Route path="/service" element={<ListService />} />
+            <Route path="/" element={<ListService />} />
             <Route path="/customer" element={<ListCustomer />} />
             <Route path="/contract" element={<ListContract />} />
-            <Route path="/service/new" element={<NewService />} />
+            <Route path="/service/room/new" element={<NewServiceRoom />} />
+            <Route path="/service/villa/new" element={<NewServiceVilla />} />
+            <Route path="/service/house/new" element={<NewServiceHouse />} />
             <Route path="/customer/new" element={<NewCustomer />} />
             <Route path="/contract/new" element={<NewContract />} />
             <Route path="/customer/update" element={<UpdateCustomer />} />
           </Routes>
       <Footer/>
+        <ToastContainer/>
     </>
   );
 }

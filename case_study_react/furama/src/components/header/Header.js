@@ -15,7 +15,7 @@ function Header(){
                         <div className="collapse navbar-collapse navbar-light" id="navbarsExample05">
                             <ul className="navbar-nav ml-auto pl-lg-5 pl-0">
                                 <li className="nav-item">
-                                    <NavLink to="/service" className="nav-link active">Trang chủ</NavLink>
+                                    <NavLink to="/" className="nav-link active">Trang chủ</NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle active" role="button"
@@ -33,8 +33,10 @@ function Header(){
                                         Dịch vụ
                                     </a>
                                     <ul className="dropdown-menu">
-                                        <li><Link to="/service/new" className="dropdown-item">Thêm dịch vụ</Link></li>
-                                        <li><Link to="/service" className="dropdown-item">Danh sách dịch vụ</Link></li>
+                                        <li><Link to="/service/villa/new" className="dropdown-item">Thêm dịch vụ Villa</Link></li>
+                                        <li><Link to="/service/house/new" className="dropdown-item">Thêm dịch vụ House</Link></li>
+                                        <li><Link to="/service/room/new" className="dropdown-item">Thêm dịch vụ Room</Link></li>
+                                        <li><Link to="/" className="dropdown-item">Danh sách dịch vụ</Link></li>
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown">

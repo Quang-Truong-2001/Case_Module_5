@@ -16,3 +16,12 @@ export const addCustomer=async (customer)=>{
         return false;
     }
 }
+
+export const getAllTypeCustomer=async ()=>{
+    try {
+        let res=await axios.get("http://localhost:8081/typeCustomer");
+        return res.data;
+    } catch (e){
+        return undefined;
+    }
+}

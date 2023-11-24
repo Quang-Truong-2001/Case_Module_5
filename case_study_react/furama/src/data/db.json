@@ -1,40 +1,178 @@
 {
+  "typeCustomer": [
+    {
+      "idTypeCustomer": 1,
+      "nameTypeCustomer": "Diamond"
+    },
+    {
+      "idTypeCustomer": 2,
+      "nameTypeCustomer": "Platinium"
+    },
+    {
+      "idTypeCustomer": 3,
+      "nameTypeCustomer": "Gold"
+    },
+    {
+      "idTypeCustomer": 4,
+      "nameTypeCustomer": "Silver"
+    },
+    {
+      "idTypeCustomer": 5,
+      "nameTypeCustomer": "Member"
+    }
+  ],
+  "service": [
+    {
+      "idService": "1",
+      "nameService": "Villa"
+    },
+    {
+      "idService": "2",
+      "nameService": "House"
+    },
+    {
+      "idService": "3",
+      "nameService": "Room"
+    }
+  ],
   "customer": [
     {
       "id": 1,
       "name": "Nguyễn Văn A",
       "birthDay": "20-10-2023",
+      "idCard": "11111111111",
       "gender": 0,
       "phone": "0847211345",
       "email": "a@gamil.com",
-      "address": "Đà Nẵng"
+      "address": "Đà Nẵng",
+      "typeCustomer": {
+        "idTypeCustomer": 1,
+        "nameTypeCustomer": "Diamond"
+      }
     },
     {
       "id": 2,
       "name": "Nguyễn Văn A",
       "birthDay": "20-10-2023",
+      "idCard": "11111111111",
       "gender": 0,
       "phone": "0847211345",
       "email": "a@gamil.com",
-      "address": "Đà Nẵng"
+      "address": "Đà Nẵng",
+      "typeCustomer": {
+        "idTypeCustomer": 1,
+        "nameTypeCustomer": "Diamond"
+      }
     },
     {
       "id": 3,
       "name": "Nguyễn Văn A",
       "birthDay": "20-10-2023",
+      "idCard": "11111111111",
       "gender": 0,
       "phone": "0847211345",
       "email": "a@gamil.com",
-      "address": "Đà Nẵng"
+      "address": "Đà Nẵng",
+      "typeCustomer": {
+        "idTypeCustomer": 1,
+        "nameTypeCustomer": "Diamond"
+      }
     },
     {
       "name": "ngô quang trường",
       "birthDay": "2023-11-28",
+      "idCard": "11111111111",
       "gender": "1",
       "phone": "0945206458",
       "email": "quangtruong2112001@gmail.com",
       "address": "Gio Linh",
-      "id": 4
+      "id": 4,
+      "typeCustomer": {
+        "idTypeCustomer": 1,
+        "nameTypeCustomer": "Diamond"
+      }
+    },
+    {
+      "name": "ngô quang trường",
+      "birthDay": "",
+      "idCard": "11111111111",
+      "gender": "1",
+      "phone": "0945206458",
+      "email": "quangtruong2112001@gmail.com",
+      "address": "Gio Linh",
+      "typeCustomer": {
+        "idTypeCustomer": "",
+        "nameTypeCustomer": ""
+      },
+      "id": 5
+    },
+    {
+      "name": "",
+      "birthDay": "",
+      "idCard": "",
+      "gender": "",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "typeCustomer": {
+        "idTypeCustomer": "",
+        "nameTypeCustomer": ""
+      },
+      "id": 6
+    }
+  ],
+  "house": [
+    {
+      "id": 1,
+      "name": "a",
+      "area": "4",
+      "money": "4",
+      "people": "4",
+      "style": "r",
+      "standard": "e",
+      "different": "e",
+      "poolArea": "7",
+      "floor": "8"
+    }
+  ],
+  "villa": [
+    {
+      "id": 1,
+      "name": "a",
+      "area": "4",
+      "money": "4",
+      "people": "4",
+      "style": "r",
+      "standard": "e",
+      "different": "e",
+      "poolArea": "7",
+      "floor": "8"
+    },
+    {
+      "name": "",
+      "area": "",
+      "money": "",
+      "people": "",
+      "style": "",
+      "standard": "",
+      "different": "",
+      "poolArea": "",
+      "floor": "",
+      "id": 2
+    }
+  ],
+  "room": [
+    {
+      "id": 1,
+      "name": "a",
+      "area": "4",
+      "money": "4",
+      "people": "4",
+      "style": "r",
+      "standard": "e",
+      "different": "e",
+      "poolArea": "7",
+      "floor": "8"
     }
   ]
 }

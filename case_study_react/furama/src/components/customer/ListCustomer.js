@@ -29,6 +29,8 @@ function ListCustomer(){
                                 <th scope="col">Tên khách hàng</th>
                                 <th scope="col">Số điện thoại</th>
                                 <th scope="col">Email</th>
+                                <th scope="col"></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -38,6 +40,9 @@ function ListCustomer(){
                                     <td>{item.name}</td>
                                     <td>{item.phone}</td>
                                     <td>{item.email}</td>
+                                    <td>
+
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
