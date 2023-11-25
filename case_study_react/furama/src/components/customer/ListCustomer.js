@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import * as customerService from "../../services/CustomerService"
 import {getAllCustomer} from "../../services/CustomerService";
+import {Link} from "react-router-dom";
 function ListCustomer(){
     const [listCustomer, setListCustomer]=useState([]);
 
@@ -30,6 +31,7 @@ function ListCustomer(){
                                 <th scope="col">Số điện thoại</th>
                                 <th scope="col">Email</th>
                                 <th scope="col"></th>
+                                <th scope="col"></th>
 
                             </tr>
                             </thead>
@@ -41,7 +43,7 @@ function ListCustomer(){
                                     <td>{item.phone}</td>
                                     <td>{item.email}</td>
                                     <td>
-
+                                        <Link className="btn btn-warning" to={`/customer/update/${item.id}`}>Chỉnh sửa</Link>
                                     </td>
                                 </tr>
                             ))}

@@ -1,20 +1,14 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as roomService from "../../services/RoomService"
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import * as Yup from "yup"
+import {useEffect, useState} from "react";
 
-function NewServiceRoom(){
+function UpdateServiceRoom(){
+    const {id}=useParams();
+    const [room,setRoom]=useState(null);
     const navigate=useNavigate();
-    const initvalue={
-        name: "",
-        area: "",
-        money: "",
-        people: "",
-        style: "",
-        free: "",
-        image: ""
-    }
     const validateObject={
         name: Yup.string().required("Không được để trống"),
         area: Yup.string().required("Không được để trống")
@@ -28,25 +22,33 @@ function NewServiceRoom(){
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         image: Yup.string().required("Không được để trống")
     }
-    const addServiceRoom=async (values)=>{
-        let isSuccess=await roomService.addRoomService(values);
+    const updateServiceRoom=async (values)=>{
+        let isSuccess=await roomService.updateRoomService(id, values);
         if(isSuccess){
-            toast.success("Thêm thành công");
-            navigate("/")
+            toast.success("Cập nhật thành công");
+            navigate("/service/room")
         }
     }
+    const getRoom=async ()=>{
+        let res=await roomService.getRoomService(id);
+        setRoom(res);
+
+    }
+    useEffect(()=>{
+        getRoom();
+    },[])
 
     return(
         <>
             <section className="site-section bg-light">
                 <div className="container">
                     <div>
-                        <h3>Thêm mới dịch vụ Room</h3>
+                        <h3>Cập nhật dịch vụ Room</h3>
                     </div>
                     <div className="form-language">
-                        <Formik initialValues={initvalue}
+                        <Formik initialValues={{...room}}
                                 onSubmit={(values)=>{
-                                    addServiceRoom(values)
+                                    updateServiceRoom(values)
                                 }}
                                 validationSchema={Yup.object(validateObject)}
                         >
@@ -115,4 +117,4 @@ function NewServiceRoom(){
         </>
     )
 }
-export default NewServiceRoom;
+export default UpdateServiceRoom;

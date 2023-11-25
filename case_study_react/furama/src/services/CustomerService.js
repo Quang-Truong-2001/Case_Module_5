@@ -16,6 +16,22 @@ export const addCustomer=async (customer)=>{
         return false;
     }
 }
+export const findCustomerById=async (id)=>{
+    try {
+        let res=await axios.get(`http://localhost:8081/customer/${id}`);
+        return res.data;
+    } catch (e){
+        return undefined;
+    }
+}
+export const updateCustomer=async (id, customer)=>{
+    try{
+        await axios.post(`http://localhost:8081/customer/${id}`,customer)
+        return true;
+    } catch (e){
+        return false;
+    }
+}
 
 export const getAllTypeCustomer=async ()=>{
     try {

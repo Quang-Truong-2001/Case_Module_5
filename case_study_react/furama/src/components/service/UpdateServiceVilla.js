@@ -1,20 +1,15 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import * as roomService from "../../services/RoomService"
+import * as villaService from "../../services/VillaService"
+import axios from "axios";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
-import * as Yup from "yup"
+import {useNavigate, useParams} from "react-router-dom";
+import * as Yup from "yup";
+import {useEffect, useState} from "react";
 
-function NewServiceRoom(){
+function UpdateServiceVilla(){
+    const {id}=useParams();
+    const [villa, setVilla]=useState();
     const navigate=useNavigate();
-    const initvalue={
-        name: "",
-        area: "",
-        money: "",
-        people: "",
-        style: "",
-        free: "",
-        image: ""
-    }
     const validateObject={
         name: Yup.string().required("Không được để trống"),
         area: Yup.string().required("Không được để trống")
@@ -24,29 +19,39 @@ function NewServiceRoom(){
         people: Yup.string().required("Không được để trống")
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         style: Yup.string().required("Không được để trống"),
-        free: Yup.string().required("Không được để trống")
+        standard: Yup.string().required("Không được để trống"),
+        different: Yup.string().required("Không được để trống"),
+        poolArea: Yup.string().required("Không được để trống")
+            .matches(/^[0-9]*$/,"Không hợp lệ"),
+        floor: Yup.string().required("Không được để trống")
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         image: Yup.string().required("Không được để trống")
     }
-    const addServiceRoom=async (values)=>{
-        let isSuccess=await roomService.addRoomService(values);
+    const updateVilla=async (values)=>{
+        let isSuccess=await villaService.updateVillaService(id,values);
         if(isSuccess){
-            toast.success("Thêm thành công");
-            navigate("/")
+            toast.success("Cập nhật thành công");
+            navigate("/service/villa");
         }
     }
-
+    const getVilla=async ()=>{
+        let res=await villaService.getVillaService(id);
+        setVilla(res);
+    }
+    useEffect(()=>{
+        getVilla();
+    },[])
     return(
         <>
             <section className="site-section bg-light">
                 <div className="container">
                     <div>
-                        <h3>Thêm mới dịch vụ Room</h3>
+                        <h3>Cập nhật dịch vụ Villa</h3>
                     </div>
                     <div className="form-language">
-                        <Formik initialValues={initvalue}
+                        <Formik initialValues={{...villa}}
                                 onSubmit={(values)=>{
-                                    addServiceRoom(values)
+                                    updateVilla(values)
                                 }}
                                 validationSchema={Yup.object(validateObject)}
                         >
@@ -92,10 +97,28 @@ function NewServiceRoom(){
                                     <ErrorMessage name="style" className="text-danger" component="span"/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="free" className="form-label"><span>Dịch vụ miễn phí đi kèm</span><span
+                                    <label htmlFor="standard" className="form-label"><span>Tiêu chuẩn phòng</span><span
                                         className="text-danger"> (*)</span></label>
-                                    <Field type="text" className="form-control" id="free" name="free"/>
-                                    <ErrorMessage name="free" className="text-danger" component="span"/>
+                                    <Field type="text" className="form-control" id="standard" name="standard"/>
+                                    <ErrorMessage name="standard" className="text-danger" component="span"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="different" className="form-label"><span>Tiện nghi khác</span><span
+                                        className="text-danger"> (*)</span></label>
+                                    <Field type="text" className="form-control" id="different" name="different"/>
+                                    <ErrorMessage name="different" className="text-danger" component="span"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="poolArea" className="form-label"><span>Diện tích hồ bơi</span><span
+                                        className="text-danger"> (*)</span></label>
+                                    <Field type="text" className="form-control" id="poolArea" name="poolArea"/>
+                                    <ErrorMessage name="poolArea" className="text-danger" component="span"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="floor" className="form-label"><span>Số tầng</span><span
+                                        className="text-danger"> (*)</span></label>
+                                    <Field type="text" className="form-control" id="floor" name="floor"/>
+                                    <ErrorMessage name="floor" className="text-danger" component="span"/>
                                 </div>
                                 <div>
                                     <div className="form-group">
@@ -108,6 +131,8 @@ function NewServiceRoom(){
                                 <button type="submit" className="btn btn-primary">Thêm mới</button>
                             </Form>
                         </Formik>
+                    </div>
+                    <div>
 
                     </div>
                 </div>
@@ -115,4 +140,4 @@ function NewServiceRoom(){
         </>
     )
 }
-export default NewServiceRoom;
+export default UpdateServiceVilla;

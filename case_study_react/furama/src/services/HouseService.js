@@ -16,3 +16,28 @@ export const getAllHouseService=async ()=>{
         return undefined
     }
 }
+export const getHouseService=async (id)=>{
+    try {
+        let res=await axios.get(`http://localhost:8081/house/${id}`);
+        return res.data;
+    } catch (e){
+        return undefined
+    }
+}
+export const deleteHouseService=async (id)=> {
+    try {
+        let res = await axios.delete(`http://localhost:8081/house/${id}`);
+        return res.data;
+    } catch (e) {
+        return undefined;
+    }
+}
+
+export const updateHouseService=async (id, house)=>{
+    try {
+        await axios.patch(`http://localhost:8081/house/${id}`,house);
+        return true;
+    } catch (e){
+        return false;
+    }
+}

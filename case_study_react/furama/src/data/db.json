@@ -45,86 +45,13 @@
       "phone": "0847211345",
       "email": "a@gamil.com",
       "address": "Đà Nẵng",
-      "typeCustomer": {
-        "idTypeCustomer": 1,
-        "nameTypeCustomer": "Diamond"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Nguyễn Văn A",
-      "birthDay": "20-10-2023",
-      "idCard": "11111111111",
-      "gender": 0,
-      "phone": "0847211345",
-      "email": "a@gamil.com",
-      "address": "Đà Nẵng",
-      "typeCustomer": {
-        "idTypeCustomer": 1,
-        "nameTypeCustomer": "Diamond"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Nguyễn Văn A",
-      "birthDay": "20-10-2023",
-      "idCard": "11111111111",
-      "gender": 0,
-      "phone": "0847211345",
-      "email": "a@gamil.com",
-      "address": "Đà Nẵng",
-      "typeCustomer": {
-        "idTypeCustomer": 1,
-        "nameTypeCustomer": "Diamond"
-      }
-    },
-    {
-      "name": "ngô quang trường",
-      "birthDay": "2023-11-28",
-      "idCard": "11111111111",
-      "gender": "1",
-      "phone": "0945206458",
-      "email": "quangtruong2112001@gmail.com",
-      "address": "Gio Linh",
-      "id": 4,
-      "typeCustomer": {
-        "idTypeCustomer": 1,
-        "nameTypeCustomer": "Diamond"
-      }
-    },
-    {
-      "name": "ngô quang trường",
-      "birthDay": "",
-      "idCard": "11111111111",
-      "gender": "1",
-      "phone": "0945206458",
-      "email": "quangtruong2112001@gmail.com",
-      "address": "Gio Linh",
-      "typeCustomer": {
-        "idTypeCustomer": "",
-        "nameTypeCustomer": ""
-      },
-      "id": 5
-    },
-    {
-      "name": "",
-      "birthDay": "",
-      "idCard": "",
-      "gender": "",
-      "phone": "",
-      "email": "",
-      "address": "",
-      "typeCustomer": {
-        "idTypeCustomer": "",
-        "nameTypeCustomer": ""
-      },
-      "id": 6
+      "typeCustomer": 1
     }
   ],
   "house": [
     {
       "id": 1,
-      "name": "a",
+      "name": "House In The Ocean Estates For Rent In Da Nang",
       "area": "4",
       "money": "4",
       "people": "4",
@@ -132,13 +59,14 @@
       "standard": "e",
       "different": "e",
       "poolArea": "7",
-      "floor": "8"
+      "floor": "8",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg"
     }
   ],
   "villa": [
     {
       "id": 1,
-      "name": "a",
+      "name": "Green Life Villa For Rent In Da Nang",
       "area": "4",
       "money": "4",
       "people": "4",
@@ -146,25 +74,27 @@
       "standard": "e",
       "different": "e",
       "poolArea": "7",
-      "floor": "8"
+      "floor": "8",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg"
     },
     {
-      "name": "",
-      "area": "",
-      "money": "",
-      "people": "",
-      "style": "",
-      "standard": "",
-      "different": "",
-      "poolArea": "",
-      "floor": "",
+      "name": "Resort",
+      "area": "5600",
+      "money": "7800",
+      "people": "9",
+      "style": "1",
+      "standard": "123",
+      "different": "ty",
+      "poolArea": "6",
+      "floor": "6",
+      "image": "https://ezcloud.vn/wp-content/uploads/2018/06/ninh-van-bay-1-1.jpg.webp",
       "id": 2
     }
   ],
   "room": [
     {
       "id": 1,
-      "name": "a",
+      "name": "Room Supper In The Ocean Estates For Rent In Da Nang",
       "area": "4",
       "money": "4",
       "people": "4",
@@ -172,7 +102,32 @@
       "standard": "e",
       "different": "e",
       "poolArea": "7",
-      "floor": "8"
+      "floor": "8",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Room Supper In The Ocean Estates For Rent In Da Nang",
+      "area": "4",
+      "money": "4",
+      "people": "4",
+      "style": "r",
+      "standard": "e",
+      "different": "e",
+      "poolArea": "7",
+      "floor": "8",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg"
+    }
+  ],
+  "contract": [
+    {
+      "idContract": "gchgf",
+      "nameCustomer": "gfhgf",
+      "nameService": "ghhgf",
+      "startDay": "2023-11-09",
+      "endDay": "2023-12-01",
+      "money": "7800",
+      "id": 1
     }
   ]
 }

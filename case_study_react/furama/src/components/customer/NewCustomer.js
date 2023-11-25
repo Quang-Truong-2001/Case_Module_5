@@ -7,8 +7,6 @@ import {toast} from "react-toastify";
 
 function NewCustomer(){
     const navigate=useNavigate();
-    const [listCustomerType, setListCustomerType]=useState([]);
-    const [customerType,setCustomerType]=useState({});
     const initValue={
         name: "",
         birthDay: "",
@@ -17,35 +15,23 @@ function NewCustomer(){
         phone: "",
         email: "",
         address: "",
-        typeCustomer: `${JSON.stringify({
-            idTypeCustomer: "", 
-            nameTypeCustomer: ""
-        })}`
+        typeCustomer: ""
     }
     const validateObject={
-        // name: Yup.string().required("Không được để trống"),
-        // birthDay: Yup.string().required("Không được để trống"),
-        // idCard: Yup.string().required("Không được để trống")
-        //     .matches(/^[0-9]{11}$/,"Số CCCD không hợp lệ"),
-        // gender: Yup.string().required("Không được để trống"),
-        // phone: Yup.string().required("Không được để trống")
-        //     .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/,"Số điện thoại không hợp lệ"),
-        // email: Yup.string().required("Không được để trống")
-        //     .matches(/^\S+@\S+\.\S+$/, "Email không hợp lệ"),
-        // address: Yup.string().required("Không được để trống")
-    }
-    const getAllCustomerType=async ()=>{
-        let data=await customerService.getAllTypeCustomer();
-        console.log(data)
-        setListCustomerType(data);
+        name: Yup.string().required("Không được để trống"),
+        birthDay: Yup.string().required("Không được để trống"),
+        idCard: Yup.string().required("Không được để trống")
+            .matches(/^[0-9]{11}$/,"Số CCCD không hợp lệ"),
+        gender: Yup.string().required("Không được để trống"),
+        phone: Yup.string().required("Không được để trống")
+            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/,"Số điện thoại không hợp lệ"),
+        email: Yup.string().required("Không được để trống")
+            .matches(/^\S+@\S+\.\S+$/, "Email không hợp lệ"),
+        address: Yup.string().required("Không được để trống")
     }
 
-    useEffect(()=>{
-        getAllCustomerType();
-    },[])
     const createCustomer=async (values)=>{
-        let res={...values,typeCustomer: JSON.parse(values.typeCustomer)}
-        let isSuccess=await customerService.addCustomer(res);
+        let isSuccess=await customerService.addCustomer(values);
 
         if(isSuccess){
             toast.success("Thêm khách hàng thành công")
@@ -141,13 +127,16 @@ function NewCustomer(){
                                                             <Field type="text" className="form-control" id="address" name="address"/>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label htmlFor="idTypeCustomer"
+                                                            <label htmlFor="typeCustomer"
                                                                    className="form-label"><span>Loại khách hàng</span><span
                                                                 className="text-danger"> (*)</span></label>
-                                                            <Field className="form-select"  name="idTypeCustomer" id="idTypeCustomer" as="select">
-                                                                {listCustomerType.map((item)=>(
-                                                                    <option key={item.idTypeCustomer} value={JSON.stringify(item)}>{item.nameTypeCustomer}</option>
-                                                                ))}
+                                                            <Field as="select" name="typeCustomer" className="form-select" aria-label="Default select example">
+                                                                <option selected="">Chọn</option>
+                                                                <option value="1">Diamond</option>
+                                                                <option value="2">Platinium</option>
+                                                                <option value="3">Gold</option>
+                                                                <option value="4">Silver</option>
+                                                                <option value="5">Member</option>
                                                             </Field>
                                                         </div>
                                                     </div>

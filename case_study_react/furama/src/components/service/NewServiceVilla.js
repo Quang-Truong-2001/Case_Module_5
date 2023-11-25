@@ -16,7 +16,8 @@ function NewServiceVilla(){
         standard: "",
         different: "",
         poolArea: "",
-        floor: ""
+        floor: "",
+        image: ""
 
     }
     const validateObject={
@@ -33,7 +34,8 @@ function NewServiceVilla(){
         poolArea: Yup.string().required("Không được để trống")
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         floor: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ")
+            .matches(/^[0-9]*$/,"Không hợp lệ"),
+        image: Yup.string().required("Không được để trống")
     }
     const addVilla=async (values)=>{
         let isSuccess=await villaService.addServiceVilla(values);
@@ -120,6 +122,14 @@ function NewServiceVilla(){
                                         className="text-danger"> (*)</span></label>
                                     <Field type="text" className="form-control" id="floor" name="floor"/>
                                     <ErrorMessage name="floor" className="text-danger" component="span"/>
+                                </div>
+                                <div>
+                                    <div className="form-group">
+                                        <label htmlFor="image" className="form-label"><span>Hình ảnh</span><span
+                                            className="text-danger"> (*)</span></label>
+                                        <Field type="text" className="form-control" id="image" name="image"/>
+                                        <ErrorMessage name="image" className="text-danger" component="span"/>
+                                    </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Thêm mới</button>
                             </Form>

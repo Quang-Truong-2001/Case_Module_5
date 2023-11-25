@@ -16,10 +16,12 @@ function NewServiceHouse(){
         style: "",
         standard: "",
         different: "",
-        floor: ""
+        floor: "",
+        image: ""
     }
     const validateObject={
         name: Yup.string().required("Không được để trống"),
+
         area: Yup.string().required("Không được để trống")
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         money: Yup.string().required("Không được để trống")
@@ -30,7 +32,8 @@ function NewServiceHouse(){
         standard: Yup.string().required("Không được để trống"),
         different: Yup.string().required("Không được để trống"),
         floor: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ")
+            .matches(/^[0-9]*$/,"Không hợp lệ"),
+        image: Yup.string().required("Không được để trống")
     }
     const addServiceHouse=async (values)=>{
         let isSuccess= await houseService.addHouseService(values);
@@ -111,6 +114,14 @@ function NewServiceHouse(){
                                         className="text-danger"> (*)</span></label>
                                     <Field type="text" className="form-control" id="floor" name="floor"/>
                                     <ErrorMessage name="floor" className="text-danger" component="span"/>
+                                </div>
+                                <div>
+                                    <div className="form-group">
+                                        <label htmlFor="image" className="form-label"><span>Hình ảnh</span><span
+                                            className="text-danger"> (*)</span></label>
+                                        <Field type="text" className="form-control" id="image" name="image"/>
+                                        <ErrorMessage name="image" className="text-danger" component="span"/>
+                                    </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Thêm mới</button>
                             </Form>

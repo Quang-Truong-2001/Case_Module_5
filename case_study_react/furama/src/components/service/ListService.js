@@ -1,4 +1,5 @@
 import image from "./images/big_image_1.jpg";
+import {Link} from "react-router-dom";
 function ListService(){
     return(
         <>
@@ -25,10 +26,9 @@ function ListService(){
                                 <a href="blog-single.html"><img src="https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
-                                    <div className="category">Rooms</div>
-                                    <h3 className="mb-3"><a href="blog-single.html">OCEAN SUITE</a></h3>
-                                    <p className="mb-4">Room size: 85.8 m2</p>
-                                    <p><a href="#" className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</a>
+                                    <div className="category">Danh sách dịch vụ room</div>
+                                    <h3 className="mb-3"><a href="blog-single.html">ROOM</a></h3>
+                                    <p><Link to={"/service/room"}className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</Link>
                                     </p>
                                 </div>
                             </div>
@@ -38,10 +38,9 @@ function ListService(){
                                 <a href="blog-single.html"><img src="https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-370x239.jpg" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
-                                    <div className="category">News</div>
-                                    <h3 className="mb-3"><a href="blog-single.html">OCEAN STUDIO SUITE</a></h3>
-                                    <p className="mb-4">Room size: 85.8 m2</p>
-                                    <p><a href="#" className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</a>
+                                    <div className="category">Danh sách dịch vụ house</div>
+                                    <h3 className="mb-3"><a href="blog-single.html">HOUSE</a></h3>
+                                    <p><Link to={"/service/house"}className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</Link>
                                     </p>
                                 </div>
                             </div>
@@ -51,16 +50,13 @@ function ListService(){
                                 <a href="blog-single.html"><img src="https://furama-resort-da-nang.hotelmix.vn/data/Photos/OriginalPhoto/12779/1277944/1277944198/Furama-Resort-Danang-Exterior.JPEG" alt="Image placeholder"
                                                                 className="img-fluid"/></a>
                                 <div className="body-text">
-                                    <div className="category">New Rooms</div>
-                                    <h3 className="mb-3"><a href="blog-single.html">OCEAN DELUXE</a></h3>
-                                    <p className="mb-4">Room size: 85.8 m2</p>
-                                    <p><a href="#" className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</a>
+                                    <div className="category">Danh sách dịch vụ Villa</div>
+                                    <h3 className="mb-3"><a href="blog-single.html">VILLA</a></h3>
+                                    <p><Link to={"/service/villa"}className="btn btn-primary btn-outline-primary btn-sm">Chi tiết</Link>
                                     </p>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className="row">
