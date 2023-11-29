@@ -9,7 +9,7 @@ import {useNavigate, useParams} from "react-router-dom";
 function UpdateServiceHouse(){
     const navigate=useNavigate();
     const {id}=useParams();
-    const [house, setHouse]=useState(null);
+    const [house, setHouse]=useState();
     const validateObject={
         name: Yup.string().required("Không được để trống"),
 
@@ -40,6 +40,7 @@ function UpdateServiceHouse(){
     useEffect(()=>{
         getHouse();
     },[])
+    if(!house) return null;
     return(
         <>
             <section className="site-section bg-light">
@@ -121,7 +122,7 @@ function UpdateServiceHouse(){
                                         <ErrorMessage name="image" className="text-danger" component="span"/>
                                     </div>
                                 </div>
-                                <button type="submit" className="btn btn-primary">Thêm mới</button>
+                                <button type="submit" className="btn btn-primary">Cập nhật</button>
                             </Form>
                         </Formik>
 

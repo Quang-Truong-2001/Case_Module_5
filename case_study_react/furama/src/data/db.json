@@ -1,24 +1,34 @@
 {
   "typeCustomer": [
     {
-      "idTypeCustomer": 1,
-      "nameTypeCustomer": "Diamond"
+      "id": 1,
+      "name": "Diamond"
     },
     {
-      "idTypeCustomer": 2,
-      "nameTypeCustomer": "Platinium"
+      "id": 2,
+      "name": "Platinium"
     },
     {
-      "idTypeCustomer": 3,
-      "nameTypeCustomer": "Gold"
+      "id": 3,
+      "name": "Gold"
     },
     {
-      "idTypeCustomer": 4,
-      "nameTypeCustomer": "Silver"
+      "id": 4,
+      "name": "Silver"
     },
     {
-      "idTypeCustomer": 5,
-      "nameTypeCustomer": "Member"
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "gender": [
+    {
+      "id": 1,
+      "name": "Nam"
+    },
+    {
+      "id": 1,
+      "name": "Nữ"
     }
   ],
   "service": [
@@ -46,6 +56,48 @@
       "email": "a@gamil.com",
       "address": "Đà Nẵng",
       "typeCustomer": 1
+    },
+    {
+      "name": "ngô quang trường",
+      "birthDay": "2023-11-09",
+      "idCard": "12345678901",
+      "gender": "1",
+      "phone": "0945206458",
+      "email": "quangtruong2112001@gmail.com",
+      "address": "Gio Linh",
+      "typeCustomer": {
+        "id": 5,
+        "name": "Member"
+      },
+      "id": 2
+    },
+    {
+      "name": "ngô quang trường",
+      "birthDay": "2023-11-03",
+      "idCard": "11111111111",
+      "gender": "1",
+      "phone": "0945206458",
+      "email": "quangtruong2112001@gmail.com",
+      "address": "Gio Linh",
+      "typeCustomer": {
+        "id": 5,
+        "name": "Member"
+      },
+      "id": 3
+    },
+    {
+      "name": "ngô quang trường",
+      "birthDay": "2023-11-17",
+      "idCard": "12345678901",
+      "gender": "1",
+      "phone": "0945206458",
+      "email": "quangtruong2112001@gmail.com",
+      "address": "Gio Linh",
+      "typeCustomer": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "id": 4
     }
   ],
   "house": [
@@ -97,13 +149,14 @@
       "name": "Room Supper In The Ocean Estates For Rent In Da Nang",
       "area": "4",
       "money": "4",
-      "people": "4",
-      "style": "r",
+      "people": "10",
+      "style": "2",
       "standard": "e",
       "different": "e",
       "poolArea": "7",
       "floor": "8",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-370x239.jpg",
+      "free": "ds"
     },
     {
       "id": 1,
@@ -121,12 +174,25 @@
   ],
   "contract": [
     {
-      "idContract": "gchgf",
-      "nameCustomer": "gfhgf",
-      "nameService": "ghhgf",
-      "startDay": "2023-11-09",
-      "endDay": "2023-12-01",
-      "money": "7800",
+      "idContract": "MBX2234",
+      "customer": {
+        "name": "ngô quang trường",
+        "birthDay": "2023-11-09",
+        "idCard": "12345678901",
+        "gender": "1",
+        "phone": "0945206458",
+        "email": "quangtruong2112001@gmail.com",
+        "address": "Gio Linh",
+        "typeCustomer": {
+          "id": 5,
+          "name": "Member"
+        },
+        "id": 2
+      },
+      "nameService": "Resort",
+      "startDay": "2023-11-28",
+      "endDay": "2023-12-02",
+      "money": "100000",
       "id": 1
     }
   ]

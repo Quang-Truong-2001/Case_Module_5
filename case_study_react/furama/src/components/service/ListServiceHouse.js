@@ -37,8 +37,8 @@ function ListServiceHouse(){
 
             <section className="site-section bg-light">
                 <div className="container">
-                    <h1 className="d-flex justify-content-center">Danh sách dịch vụ House</h1>
-                    <div className="row mb-5">
+                    <h1 style={{ fontFamily: '"-apple-system"' }} className="d-flex justify-content-center">Danh sách dịch vụ House</h1>
+                    <div className="row mb-5 mt-5">
                         {listHouse.map((item)=>(
                             <div className="col-md-4">
                                 <div className="post-entry">

@@ -40,8 +40,8 @@ function ListServiceVilla(){
 
             <section className="site-section bg-light">
                 <div className="container">
-                    <h1 className="d-flex justify-content-center">Danh sách dịch vụ Villa</h1>
-                    <div className="row mb-5">
+                    <h1 style={{ fontFamily: '"-apple-system"' }} className="d-flex justify-content-center">Danh sách dịch vụ Villa</h1>
+                    <div className="row mb-5 mt-5">
                         {listVilla.map((item)=>(
                             <div className="col-md-4">
                                 <div className="post-entry">

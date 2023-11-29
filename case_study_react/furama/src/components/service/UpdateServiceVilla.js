@@ -6,42 +6,43 @@ import {useNavigate, useParams} from "react-router-dom";
 import * as Yup from "yup";
 import {useEffect, useState} from "react";
 
-function UpdateServiceVilla(){
-    const {id}=useParams();
-    const [villa, setVilla]=useState();
-    const navigate=useNavigate();
-    const validateObject={
+function UpdateServiceVilla() {
+    const {id} = useParams();
+    const [villa, setVilla] = useState();
+    const navigate = useNavigate();
+    const validateObject = {
         name: Yup.string().required("Không được để trống"),
         area: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+            .matches(/^[0-9]*$/, "Không hợp lệ"),
         money: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+            .matches(/^[0-9]*$/, "Không hợp lệ"),
         people: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+            .matches(/^[0-9]*$/, "Không hợp lệ"),
         style: Yup.string().required("Không được để trống"),
         standard: Yup.string().required("Không được để trống"),
         different: Yup.string().required("Không được để trống"),
         poolArea: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+            .matches(/^[0-9]*$/, "Không hợp lệ"),
         floor: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+            .matches(/^[0-9]*$/, "Không hợp lệ"),
         image: Yup.string().required("Không được để trống")
     }
-    const updateVilla=async (values)=>{
-        let isSuccess=await villaService.updateVillaService(id,values);
-        if(isSuccess){
+    const updateVilla = async (values) => {
+        let isSuccess = await villaService.updateVillaService(id, values);
+        if (isSuccess) {
             toast.success("Cập nhật thành công");
             navigate("/service/villa");
         }
     }
-    const getVilla=async ()=>{
-        let res=await villaService.getVillaService(id);
+    const getVilla = async () => {
+        let res = await villaService.getVillaService(id);
         setVilla(res);
     }
-    useEffect(()=>{
+    useEffect(() => {
         getVilla();
-    },[])
-    return(
+    }, [])
+    if (!villa) return null;
+    return (
         <>
             <section className="site-section bg-light">
                 <div className="container">
@@ -50,7 +51,7 @@ function UpdateServiceVilla(){
                     </div>
                     <div className="form-language">
                         <Formik initialValues={{...villa}}
-                                onSubmit={(values)=>{
+                                onSubmit={(values) => {
                                     updateVilla(values)
                                 }}
                                 validationSchema={Yup.object(validateObject)}
@@ -79,7 +80,8 @@ function UpdateServiceVilla(){
                                     <ErrorMessage name="money" className="text-danger" component="span"/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="people" className="form-label"><span>Số lượng người tối đa</span><span
+                                    <label htmlFor="people"
+                                           className="form-label"><span>Số lượng người tối đa</span><span
                                         className="text-danger"> (*)</span></label>
                                     <Field type="text" className="form-control" id="people" name="people"/>
                                     <ErrorMessage name="people" className="text-danger" component="span"/>
@@ -128,7 +130,7 @@ function UpdateServiceVilla(){
                                         <ErrorMessage name="image" className="text-danger" component="span"/>
                                     </div>
                                 </div>
-                                <button type="submit" className="btn btn-primary">Thêm mới</button>
+                                <button type="submit" className="btn btn-primary">Cập nhật</button>
                             </Form>
                         </Formik>
                     </div>
@@ -140,4 +142,5 @@ function UpdateServiceVilla(){
         </>
     )
 }
+
 export default UpdateServiceVilla;

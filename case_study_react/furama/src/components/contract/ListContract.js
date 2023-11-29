@@ -49,7 +49,7 @@ function ListContract(){
                                 <tr>
                                     <th scope="row">{index+1}</th>
                                     <td>{item.idContract}</td>
-                                    <td>{item.nameCustomer}</td>
+                                    <td>{item.customer.name}</td>
                                     <td>{item.nameService}</td>
                                     <td>{item.startDay}</td>
                                     <td>{item.endDay}</td>

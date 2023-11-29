@@ -26,7 +26,7 @@ export const findCustomerById=async (id)=>{
 }
 export const updateCustomer=async (id, customer)=>{
     try{
-        await axios.post(`http://localhost:8081/customer/${id}`,customer)
+        await axios.patch(`http://localhost:8081/customer/${id}`,customer)
         return true;
     } catch (e){
         return false;

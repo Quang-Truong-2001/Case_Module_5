@@ -7,6 +7,12 @@ import {toast} from "react-toastify";
 
 function NewCustomer(){
     const navigate=useNavigate();
+    const [listTypeCustomer,setListTypeCustomer]=useState([]);
+    const getListTypeCustomer=async ()=>{
+        let res=await customerService.getAllTypeCustomer();
+        console.log(res)
+        setListTypeCustomer(res);
+    }
     const initValue={
         name: "",
         birthDay: "",
@@ -15,7 +21,10 @@ function NewCustomer(){
         phone: "",
         email: "",
         address: "",
-        typeCustomer: ""
+        typeCustomer: JSON.stringify({
+            id: 5,
+            name: "Member"
+        })
     }
     const validateObject={
         name: Yup.string().required("Không được để trống"),
@@ -31,13 +40,18 @@ function NewCustomer(){
     }
 
     const createCustomer=async (values)=>{
-        let isSuccess=await customerService.addCustomer(values);
+        let res={...values,typeCustomer: JSON.parse(values.typeCustomer)}
+        let isSuccess=await customerService.addCustomer(res);
 
         if(isSuccess){
             toast.success("Thêm khách hàng thành công")
             navigate("/customer")
         }
     }
+    useEffect(()=>{
+        getListTypeCustomer();
+    },[])
+    if(!listTypeCustomer) return null
     return(
         <>
             <section className="site-section bg-light">
@@ -101,6 +115,7 @@ function NewCustomer(){
                                                                     Nữ
                                                                 </label>
                                                             </div>
+                                                            <ErrorMessage name="gender" className="text-danger" component="span"/>
                                                         </div>
 
                                                     </div>
@@ -119,29 +134,28 @@ function NewCustomer(){
                                                                    className="form-label"><span>Email</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field type="text" className="form-control" id="free" name="email"/>
+                                                            <ErrorMessage name="email" className="text-danger" component="span"/>
                                                         </div>
                                                         <div className="form-group">
                                                             <label htmlFor="address"
                                                                    className="form-label"><span>Địa chỉ</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field type="text" className="form-control" id="address" name="address"/>
+                                                            <ErrorMessage name="address" className="text-danger" component="span"/>
                                                         </div>
                                                         <div className="form-group">
                                                             <label htmlFor="typeCustomer"
                                                                    className="form-label"><span>Loại khách hàng</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field as="select" name="typeCustomer" className="form-select" aria-label="Default select example">
-                                                                <option selected="">Chọn</option>
-                                                                <option value="1">Diamond</option>
-                                                                <option value="2">Platinium</option>
-                                                                <option value="3">Gold</option>
-                                                                <option value="4">Silver</option>
-                                                                <option value="5">Member</option>
+                                                                {listTypeCustomer.map((item)=>(
+                                                                    <option key={item.id} value={JSON.stringify(item)}>{item.name}</option>
+                                                                ))}
                                                             </Field>
                                                         </div>
                                                     </div>
                                                     <div className="d-flex justify-content-center pt-5">
-                                                        <button type="submit" className="btn btn-primary">Cập nhật</button>
+                                                        <button type="submit" className="btn btn-primary">Thêm mới</button>
                                                     </div>
                                                 </div>
 

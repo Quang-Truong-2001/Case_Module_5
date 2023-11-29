@@ -1,34 +1,48 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup"
 import * as contractService from "../../services/ContractService"
+import * as customerService from "../../services/CustomerService"
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 function NewContract(){
     let navigate=useNavigate();
+    let [listCustomer,setListCustomer]=useState([]);
     const initValue={
         idContract: "",
-        nameCustomer: "",
+        customer: {
+
+        },
         nameService: "",
         startDay: "",
         endDay: "",
         money: ""
     }
     const validateObject={
-        // idContract: Yup.string().required("Không được để trống"),
-        // nameCustomer: Yup.string().required("Không được để trống"),
-        // nameService: Yup.string().required("Không được để trống"),
-        // startDay: Yup.date().required("Không được để trống"),
-        // endDay: Yup.date().required("Không được để trống"),
-        // money: Yup.number().required("Không được để trống").min(1,"Tổng tiền lớn hơn 0")
+        idContract: Yup.string().required("Không được để trống"),
+        customer: Yup.string().required("Không được để trống"),
+        nameService: Yup.string().required("Không được để trống"),
+        startDay: Yup.date().required("Không được để trống").min(new Date(),"Không được nhỏ hơn ngày hiện tại"),
+        endDay: Yup.date().required("Không được để trống").min(new Date(),"Không được nhỏ hơn ngày hiện tại"),
+        money: Yup.number().required("Không được để trống").min(1,"Tổng tiền lớn hơn 0")
     }
     const addContract= async (value)=>{
-        let isSucceed = await contractService.addContract(value);
+        let res={...value,customer: JSON.parse(value.customer)}
+        let isSucceed = await contractService.addContract(res);
         if (isSucceed){
             toast.success("Thêm mới thành công");
             navigate("/contract")
         }
     }
+    const getAllCustomer=async ()=>{
+        let res=await customerService.getAllCustomer();
+        setListCustomer(res);
+    }
+    useEffect(()=>{
+        getAllCustomer();
+    })
+    if (!listCustomer) return null;
     return(
         <>
             <section className="site-section bg-light">
@@ -51,13 +65,16 @@ function NewContract(){
                                         <ErrorMessage name="idContract" className="text-danger" component="span"/>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="form-group">
-                                        <label htmlFor="nameCustomer" className="form-label"><span>Tên khách hàng</span><span
-                                            className="text-danger"> (*)</span></label>
-                                        <Field type="text" className="form-control" id="nameCustomer" name="nameCustomer"/>
-                                        <ErrorMessage name="nameCustomer" className="text-danger" component="span"/>
-                                    </div>
+                                <div className="form-group">
+                                    <label htmlFor="customer" className="form-label"><span>Khách hàng</span><span
+                                        className="text-danger"> (*)</span></label>
+                                    <Field id="customer" as="select" className="form-select" name="customer">
+                                        {listCustomer.map((item)=>(
+                                            <option value={JSON.stringify(item)}>{item.name}</option>
+                                        ) )}
+
+                                    </Field>
+                                    <ErrorMessage name="customer" className="text-danger" component="span"/>
                                 </div>
                                 <div>
                                     <div className="form-group">

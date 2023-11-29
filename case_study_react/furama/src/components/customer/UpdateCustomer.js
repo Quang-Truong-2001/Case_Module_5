@@ -8,10 +8,17 @@ import {toast} from "react-toastify";
 function UpdateCustomer(){
     const {id}=useParams();
     const navigate=useNavigate();
-    const [customer,setCustomer]=useState(null);
-    const getCustomer=async ()=>{
-        let res=await customerService.findCustomerById(id);
+    const [customer,setCustomer]=useState();
+    const [listTypeCustomer,setListTypeCustomer]=useState([]);
+
+    const getListTypeCustomer=async ()=>{
+        let res=await customerService.getAllTypeCustomer();
         console.log(res)
+        setListTypeCustomer(res);
+    }
+    const getCustomer=async ()=>{
+        let value=await customerService.findCustomerById(id);
+        let res={...value,typeCustomer: JSON.stringify(value.typeCustomer)}
         setCustomer(res);
     }
     const validateObject={
@@ -26,18 +33,24 @@ function UpdateCustomer(){
             .matches(/^\S+@\S+\.\S+$/, "Email không hợp lệ"),
         address: Yup.string().required("Không được để trống")
     }
-
-    useEffect(()=>{
-        getCustomer();
-    },[])
     const updateCustomer=async (values)=>{
-        let isSuccess=await customerService.updateCustomer(id,values);
-
+        let res={...values,typeCustomer: JSON.parse(values.typeCustomer)}
+        let isSuccess=await customerService.updateCustomer(id,res);
         if(isSuccess){
             toast.success("Thêm khách hàng thành công")
             navigate("/customer")
         }
     }
+
+    useEffect(()=>{
+        getListTypeCustomer();
+    },[])
+    useEffect(()=>{
+        getCustomer();
+    },[])
+
+    if(!listTypeCustomer) return null
+    if(!customer) return null
     return(
         <>
             <section className="site-section bg-light">
@@ -101,6 +114,7 @@ function UpdateCustomer(){
                                                                     Nữ
                                                                 </label>
                                                             </div>
+                                                            <ErrorMessage name="gender" className="text-danger" component="span"/>
                                                         </div>
 
                                                     </div>
@@ -131,12 +145,9 @@ function UpdateCustomer(){
                                                                    className="form-label"><span>Loại khách hàng</span><span
                                                                 className="text-danger"> (*)</span></label>
                                                             <Field as="select" name="typeCustomer" className="form-select" aria-label="Default select example">
-                                                                <option selected="">Chọn</option>
-                                                                <option value="1">Diamond</option>
-                                                                <option value="2">Platinium</option>
-                                                                <option value="3">Gold</option>
-                                                                <option value="4">Silver</option>
-                                                                <option value="5">Member</option>
+                                                                {listTypeCustomer.map((item)=>(
+                                                                    <option key={item.id} value={JSON.stringify(item)}>{item.name}</option>
+                                                                ))}
                                                             </Field>
                                                         </div>
                                                     </div>

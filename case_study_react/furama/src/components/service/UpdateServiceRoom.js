@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 
 function UpdateServiceRoom(){
     const {id}=useParams();
-    const [room,setRoom]=useState(null);
+    const [room,setRoom]=useState();
     const navigate=useNavigate();
     const validateObject={
         name: Yup.string().required("Không được để trống"),
@@ -18,11 +18,11 @@ function UpdateServiceRoom(){
         people: Yup.string().required("Không được để trống")
             .matches(/^[0-9]*$/,"Không hợp lệ"),
         style: Yup.string().required("Không được để trống"),
-        free: Yup.string().required("Không được để trống")
-            .matches(/^[0-9]*$/,"Không hợp lệ"),
+        free: Yup.string().required("Không được để trống"),
         image: Yup.string().required("Không được để trống")
     }
     const updateServiceRoom=async (values)=>{
+        console.log(values)
         let isSuccess=await roomService.updateRoomService(id, values);
         if(isSuccess){
             toast.success("Cập nhật thành công");
@@ -37,7 +37,7 @@ function UpdateServiceRoom(){
     useEffect(()=>{
         getRoom();
     },[])
-
+    if(!room) return null
     return(
         <>
             <section className="site-section bg-light">
@@ -48,6 +48,7 @@ function UpdateServiceRoom(){
                     <div className="form-language">
                         <Formik initialValues={{...room}}
                                 onSubmit={(values)=>{
+                                    console.log(values)
                                     updateServiceRoom(values)
                                 }}
                                 validationSchema={Yup.object(validateObject)}
@@ -107,7 +108,7 @@ function UpdateServiceRoom(){
                                         <ErrorMessage name="image" className="text-danger" component="span"/>
                                     </div>
                                 </div>
-                                <button type="submit" className="btn btn-primary">Thêm mới</button>
+                                <button type="submit" className="btn btn-primary">Cập nhật</button>
                             </Form>
                         </Formik>
 
